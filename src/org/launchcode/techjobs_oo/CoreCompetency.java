@@ -29,7 +29,7 @@ public class CoreCompetency {
         if (this == o) return true;
         if (!(o instanceof CoreCompetency)) return false;
         CoreCompetency that = (CoreCompetency) o;
-        return id == that.id;
+        return getId() == that.getId();
     }
 
     @Override

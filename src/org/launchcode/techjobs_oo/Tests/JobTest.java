@@ -60,7 +60,7 @@ public class JobTest {
     }
 
     @Test
-    public void jobToStringBeginsAndEndsWithNewLine() { // why does this test take so long?
+    public void toStringBeginsAndEndsWithNewLine() { // why does this test take so long?
         assertEquals('\n', test.toString().charAt(0));
         assertEquals('\n', test.toString().charAt(test.toString().length() - 1));
     }

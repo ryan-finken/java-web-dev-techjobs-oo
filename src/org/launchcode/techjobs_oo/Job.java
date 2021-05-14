@@ -33,7 +33,7 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    // Custom equals and hashCode methods:
+    // Custom equals, hashCode, and toString methods:
 
     @Override
     public boolean equals(Object o) {
@@ -46,6 +46,59 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        // assignment doesn't specify what "empty" means, so here's my definition:
+        //      a field is empty if it is null or its string representation is an empty string
+        boolean nameIsEmpty = getName() == null || getName().equals("");
+        boolean employerIsEmpty = getEmployer() == null || getEmployer().getValue() == null || getEmployer().getValue().equals("");
+        boolean locationIsEmpty = getLocation() == null || getLocation().getValue() == null || getLocation().getValue().equals("");
+        boolean posTypeIsEmpty = getPositionType() == null || getPositionType().getValue() == null || getPositionType().getValue().equals("");
+        boolean coreCompIsEmpty = getCoreCompetency() == null || getCoreCompetency().getValue() == null || getCoreCompetency().getValue().equals("");
+
+        if (nameIsEmpty && employerIsEmpty && locationIsEmpty && posTypeIsEmpty && coreCompIsEmpty) {
+            return "\nOOPS! This job does not seem to exist.\n";
+        } else {
+            String idLine = "ID: " + getId() + "\n";
+            String nameLine = "Name: ";
+            String employerLine = "Employer: ";
+            String locationLine = "Location: ";
+            String posTypeLine = "Position Type: ";
+            String coreCompLine = "Core Competency: ";
+            String emptyFieldWarning = "Data not available";
+
+            // for each field, check if empty, and if so, display warning. otherwise, display field
+            if (nameIsEmpty) {
+                nameLine += emptyFieldWarning + "\n";
+            } else {
+                nameLine += getName() + "\n";
+            }
+            if (employerIsEmpty) {
+                employerLine += emptyFieldWarning + "\n";
+            } else {
+                employerLine += getEmployer() + "\n";
+            }
+            if (locationIsEmpty) {
+                locationLine += emptyFieldWarning + "\n";
+            } else {
+                locationLine += getLocation() + "\n";
+            }
+            if (posTypeIsEmpty) {
+                posTypeLine += emptyFieldWarning + "\n";
+            } else {
+                posTypeLine += getPositionType() + "\n";
+            }
+            if (coreCompIsEmpty) {
+                coreCompLine += emptyFieldWarning + "\n";
+            } else {
+                coreCompLine += getCoreCompetency() + "\n";
+            }
+            return "\n" + idLine + nameLine + employerLine + locationLine + posTypeLine + coreCompLine + "\n";
+        }
+
+
     }
 
     // Getters and setters:

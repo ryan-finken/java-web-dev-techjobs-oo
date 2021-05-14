@@ -58,4 +58,52 @@ public class JobTest {
         );
         assertFalse(test.equals(notTest));
     }
+
+    @Test
+    public void jobToStringBeginsAndEndsWithNewLine() { // why does this test take so long?
+        assertEquals('\n', test.toString().charAt(0));
+        assertEquals('\n', test.toString().charAt(test.toString().length() - 1));
+    }
+
+    @Test
+    public void toStringFormatsJobToSpec() {
+        String expected = "\n" +
+                "ID: " + test.getId() + "\n" +
+                "Name: Product Tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n" +
+                "\n";
+        assertEquals(expected, test.toString());
+    }
+
+    @Test
+    public void toStringDisplaysMessageForEmptyFields() {
+        Job emptyFields = new Job(
+                "Placeholder",
+                new Employer(null),
+                null,
+                new PositionType(""),
+                new CoreCompetency(null)
+        );
+
+        String expected = "\n" +
+                "ID: " + emptyFields.getId() + "\n" +
+                "Name: Placeholder\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n" +
+                "\n";
+
+        assertEquals(expected, emptyFields.toString());
+    }
+
+    @Test
+    public void toStringDisplaysMessageForEmptyJob() {
+        Job empty = new Job();
+        String expected = "\nOOPS! This job does not seem to exist.\n";
+        assertEquals(expected, empty.toString());
+    }
 }

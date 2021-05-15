@@ -73,8 +73,7 @@ public class JobTest {
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
                 "Position Type: Quality control\n" +
-                "Core Competency: Persistence\n" +
-                "\n";
+                "Core Competency: Persistence\n";
         assertEquals(expected, test.toString());
     }
 
@@ -94,8 +93,7 @@ public class JobTest {
                 "Employer: Data not available\n" +
                 "Location: Data not available\n" +
                 "Position Type: Data not available\n" +
-                "Core Competency: Data not available\n" +
-                "\n";
+                "Core Competency: Data not available\n";
 
         assertEquals(expected, emptyFields.toString());
     }

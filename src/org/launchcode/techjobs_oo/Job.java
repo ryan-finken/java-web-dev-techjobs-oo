@@ -95,7 +95,7 @@ public class Job {
             } else {
                 coreCompLine += getCoreCompetency() + "\n";
             }
-            return "\n" + idLine + nameLine + employerLine + locationLine + posTypeLine + coreCompLine + "\n";
+            return "\n" + idLine + nameLine + employerLine + locationLine + posTypeLine + coreCompLine;
         }
 
 

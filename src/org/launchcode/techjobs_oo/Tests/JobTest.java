@@ -13,7 +13,7 @@ public class JobTest {
     Job test;
 
     @Before
-    public void createJobObjects() {
+    public void createJobObject() {
         test = new Job(
                 "Product Tester",
                 new Employer("ACME"),
@@ -60,13 +60,13 @@ public class JobTest {
     }
 
     @Test
-    public void toStringBeginsAndEndsWithNewLine() { // why does this test take so long?
+    public void toStringBeginsAndEndsWithNewLine() {
         assertEquals('\n', test.toString().charAt(0));
         assertEquals('\n', test.toString().charAt(test.toString().length() - 1));
     }
 
     @Test
-    public void toStringFormatsJobToSpec() {
+    public void toStringFormatsJobToSpec() { // why does this test take so long?
         String expected = "\n" +
                 "ID: " + test.getId() + "\n" +
                 "Name: Product Tester\n" +
